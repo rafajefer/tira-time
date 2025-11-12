@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteio de Times - Protótipo Lógico</title>
+  <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body>
+  <h1>Sorteio de Times</h1>
+
+  <div class="section" id="search-section">
+    <h2>Buscar Jogadores</h2>
+    <input type="text" id="search" placeholder="Digite o nome..." autocomplete="off" />
+    <ul id="autocomplete-list" class="autocomplete"></ul>
+  </div>
+
+  <div class="section" id="selected-section">
+    <ul id="selected-players"></ul>
+  </div>
+
+  <div class="section" id="action-section">
+    <label for="num-teams"><strong>Quantidade de times:</strong></label>
+    <select id="num-teams">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="8">8</option>
+    </select>
+    <button id="btn-draw">Sortear Times</button>
+  </div>
+
+  <div class="section" id="result-section">
+    <h2>Resultado</h2>
+    <div id="result" class="teams"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

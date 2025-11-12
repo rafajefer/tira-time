@@ -1,0 +1,26 @@
+
+// ===============================
+    // Mock de jogadores
+    // ===============================
+    /*
+    Nível dos jogadores
+    S - 1
+    A+ - 2
+    A - 3
+    B+ - 4
+    B - 5
+    C - 6
+    D - 7
+
+    lvels
+
+    */
+
+
+    OK - Lista por ordem alfabetica
+    OK - verifica se o jogador ja está na lista e nao adicionar denovo
+    OK - Ao passar o mouse na lista do jogador ter um efeito houve
+
+    Colocor um botão de mover todos o jogadores do time 1
+    COlocar um botão para mover o jogador para o seu time
+    Colocar um botão para mover geral para os times certos

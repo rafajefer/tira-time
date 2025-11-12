@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ "$1" == "" ] ; then
+  echo Usage:
+  echo
+  echo -e "\033[1;32m  $0 server \033[0m                    - run server (FastAPI)"
+  echo -e "\033[1;32m  $0 server restart \033[0m            - run server restart (FastAPI)"
+  echo -e "\033[1;32m  $0 module \033[0m                    - run module (FastAPI)"
+  exit 1
+fi
+
+if [ "$1" == "server" ] ; then
+    if [ "$2" == "restart" ] ; then
+        docker compose restart
+        exit 0
+    fi
+    docker compose up -d
+    exit 0
+fi
+
+if [ "$1" == "module" ]; then
+    MODULE_NAME="$2"
+    docker compose exec -T api bash -c "python infrastructure/modules/$MODULE_NAME.py"
+    exit 0
+fi
