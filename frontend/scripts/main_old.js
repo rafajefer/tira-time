@@ -1,5 +1,7 @@
 // app.js (versão corrigida)
 
+import { movePlayerToRoomConfirmed } from './api.js';
+
 let selectedPlayers = [];
 let allPlayers = [];
 
@@ -16,49 +18,21 @@ const levels = {
 // ===============================
 // Utilitários de skill
 // ===============================
-function getSkillValue(skill) {
-  // skill pode ser string ("A+", "4") ou número
-  if (typeof skill === 'number') return Number(skill);
-  if (!skill && skill !== 0) return 0;
+// function getSkillValue(skill) {
+//   // skill pode ser string ("A+", "4") ou número
+//   if (typeof skill === 'number') return Number(skill);
+//   if (!skill && skill !== 0) return 0;
 
-  const s = String(skill).trim();
+//   const s = String(skill).trim();
 
-  // se está no mapa levels
-  if (levels[s] !== undefined) return Number(levels[s]);
+//   // se está no mapa levels
+//   if (levels[s] !== undefined) return Number(levels[s]);
 
-  // tenta converter número em string
-  const n = parseFloat(s.replace(',', '.'));
-  return Number.isFinite(n) ? n : 0;
-}
+//   // tenta converter número em string
+//   const n = parseFloat(s.replace(',', '.'));
+//   return Number.isFinite(n) ? n : 0;
+// }
 
-// ===============================
-// Carrega jogadores do CSV
-// ===============================
-async function getPlayers() {
-  try {
-    const response = await fetch('notas.csv');
-    const text = await response.text();
-
-    const linhas = text.split('\n').filter(l => l.trim() !== '');
-    const dados = linhas.slice(1); // pule o cabeçalho, se houver
-
-    allPlayers = dados.map(linha => {
-      const colunas = linha.split(',');
-      // Normaliza: name e skill como string
-      const name = colunas[0]?.trim();
-      const skillRaw = colunas[1]?.trim() || "";
-      return {
-        name,
-        skill: skillRaw
-      };
-    });
-
-    console.log('Jogadores carregados:', allPlayers);
-    initSearch(); // inicia autocomplete
-  } catch (error) {
-    console.error('Erro ao carregar CSV:', error);
-  }
-}
 
 // ===============================
 // Inicializa campo de busca
@@ -104,34 +78,8 @@ function initSearch() {
   });
 }
 
-// ===============================
-// Persistência localStorage
-// ===============================
-function saveSelectedPlayers() {
-  // salvamos somente name e skill (forma simples)
-  const toSave = selectedPlayers.map(p => ({ name: p.name, skill: p.skill }));
-  localStorage.setItem("selectedPlayers", JSON.stringify(toSave));
-}
 
-function loadSelectedPlayers() {
-  const saved = localStorage.getItem("selectedPlayers");
-  if (saved) {
-    try {
-      const arr = JSON.parse(saved);
-      arr.forEach(item => {
-        // define present = false se undefined, mantém se tiver valor
-        const present = item.present === true;
-        if (!selectedPlayers.find(p => p.name === item.name)) {
-          selectedPlayers.push({ name: item.name, skill: item.skill, present });
-        }
-        selectedPlayers.sort((a, b) => a.name.localeCompare(b.name, 'pt', { sensitivity: 'base' }));
-      });
-      renderSelectedPlayers();
-    } catch (e) {
-      console.error("Erro ao carregar jogadores salvos:", e);
-    }
-  }
-}
+
 
 // ===============================
 // Adiciona jogador selecionado
@@ -315,7 +263,7 @@ function renderTeams(teams) {
               <span>${p.name} — ${p.skill}</span>
               <button 
                 style="padding:4px 8px; border:none; border-radius:4px; background:var(--bs-primary); color:#fff; cursor:pointer;"
-                onclick="callApi('${encodeURIComponent(p.name)}', '${encodeURIComponent(p.skill)}')"
+                onclick="movePlayerToRoomConfirmed('${encodeURIComponent(p.name)}', '${encodeURIComponent(p.skill)}')"
               >
                 Mover
               </button>

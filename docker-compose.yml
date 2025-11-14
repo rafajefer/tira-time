@@ -12,17 +12,15 @@ services:
     restart: unless-stopped
     volumes:
       - ./backend:/app
-
-  # frontend:
-  #   image: nginx:alpine
-  #   container_name: tira_time_frontend
-  #   ports:
-  #     - "5500:80"   # acesse http://localhost:5500
-  #   volumes:
-  #     - ./frontend:/usr/share/nginx/html:ro
-  #   depends_on:
-  #     - backend
-  #   restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+    container_name: tira_time_front
+    ports:
+      - "3000:80"
+    # volumes:
+    #   - ./frontend:/usr/share/nginx/html
+    restart: unless-stopped
 
 networks:
   default:

@@ -24,3 +24,11 @@
     Colocor um botão de mover todos o jogadores do time 1
     COlocar um botão para mover o jogador para o seu time
     Colocar um botão para mover geral para os times certos
+
+
+Componente	Função
+DiscordClient	controla o bot e movimenta usuários
+PlayerRepositoryImpl	acessa dados de jogadores (banco, mock etc.)
+PlayerService	regra de negócio (decide quem e pra onde mover)
+Container	injeta dependências entre camadas
+FastAPI	apenas expõe a API e chama o serviço

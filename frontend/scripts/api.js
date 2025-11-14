@@ -1,11 +1,11 @@
 const BASE_URL = "http://localhost:8000";
 
-async function movePlayerToRoomConfirmed(name, skill) {
+export async function movePlayerToRoomConfirmed(discordId) {
   try {
-    const response = await fetch(`${BASE_URL}/discord/movePlayerToRoomConfirmed`, {
+    const response = await fetch(`${BASE_URL}/discord/move_player`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, skill })
+      body: JSON.stringify({ 'discord_id': discordId })
     });
 
     if (!response.ok) throw new Error("Erro na chamada da API");
