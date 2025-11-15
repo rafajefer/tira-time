@@ -2,26 +2,25 @@ name: Deploy Frontend
 
 on:
   push:
-    branches: ["master"]
-
-permissions:
-  contents: write
+    branches: ["master"]   # já que sua branch é master
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
 
-      # Copia somente a pasta frontend para a pasta dist que será publicada
-      - name: Prepare site folder
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
         run: |
-          mkdir dist
-          cp -R frontend/* dist/
+          cd frontend
+          mkdir -p ../dist
+          cp -R * ../dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./dist
