@@ -1,10 +1,8 @@
 import { addSelectedPlayer, removePlayer, removeAllPlayers, togglePresence, clearAllPresences } from './players.js';
 
 export function renderPlayersInputSearch(players) {
-    const list = document.querySelector('#selected-players');
     const searchInput = document.querySelector('#search-input');
     const autocompleteList = document.getElementById("autocomplete-list");
-    // list.innerHTML = '';
     autocompleteList.innerHTML = "";
 
     players.forEach(player => {
@@ -101,10 +99,10 @@ export function renderSelectedPlayers(selectedPlayers) {
 
 export function initSearch(onSearch) {
     const searchInput = document.querySelector('#search-input');
-
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.trim().toLowerCase();
         if (!query) {
+            const autocompleteList = document.getElementById("autocomplete-list"); // fdasf22
             autocompleteList.innerHTML = "";
         }
         onSearch(query);

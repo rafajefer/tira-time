@@ -1,5 +1,5 @@
 import { getPlayers, selectedPlayers } from './players.js';
-import { loadSelectedPlayers, saveSelectedPlayers } from './storage.js';
+import { loadSelectedPlayers } from './storage.js';
 import { drawTeams, renderTeams } from './teams.js';
 import { initSearch, renderPlayersInputSearch, renderSelectedPlayers } from './ui.js';
 
