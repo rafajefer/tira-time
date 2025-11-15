@@ -104,7 +104,6 @@ export function initSearch(onSearch) {
 
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.trim().toLowerCase();
-        console.log("Search query:", query);
         if (!query) {
             autocompleteList.innerHTML = "";
         }

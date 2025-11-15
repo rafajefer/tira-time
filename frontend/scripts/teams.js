@@ -35,8 +35,6 @@ export function drawTeams(players, numTeams = 2, attempts = 5000) {
       if (diff === 0) break;
     }
   }
-
-  console.log(`Melhor equilíbrio encontrado (diferença total: ${bestDiff.toFixed(2)}) após ${attempts} tentativas.`);
   return bestTeams;
 }
 
