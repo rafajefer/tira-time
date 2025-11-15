@@ -16,6 +16,8 @@ services:
     build:
       context: ./frontend
     container_name: tira_time_front
+    volumes:
+      - ./frontend:/usr/share/nginx/html
     ports:
       - "3000:80"
     restart: unless-stopped
