@@ -10,23 +10,3 @@ export function loadSelectedPlayers() {
   const saved = localStorage.getItem("selectedPlayers");
   return saved ? JSON.parse(saved) : [];
 }
-
-// function loadSelectedPlayers() {
-//   const saved = localStorage.getItem("selectedPlayers");
-//   if (saved) {
-//     try {
-//       const arr = JSON.parse(saved);
-//       arr.forEach(item => {
-//         // define present = false se undefined, mantém se tiver valor
-//         const present = item.present === true;
-//         if (!selectedPlayers.find(p => p.name === item.name)) {
-//           selectedPlayers.push({ name: item.name, skill: item.skill, present });
-//         }
-//         selectedPlayers.sort((a, b) => a.name.localeCompare(b.name, 'pt', { sensitivity: 'base' }));
-//       });
-//       renderSelectedPlayers();
-//     } catch (e) {
-//       console.error("Erro ao carregar jogadores salvos:", e);
-//     }
-//   }
-// }

@@ -11,10 +11,8 @@ export async function movePlayerToRoomConfirmed(discordId) {
     if (!response.ok) throw new Error("Erro na chamada da API");
 
     const data = await response.json();
-    console.log("Resposta da API:", data);
     alert(`API chamada com sucesso para ${name}`);
   } catch (error) {
-    console.error("Falha ao chamar API:", error);
     alert(`Erro ao chamar API para ${name}`);
   }
 }
@@ -30,10 +28,8 @@ async function movePlayerToRoomTeam(name, skill) {
     if (!response.ok) throw new Error("Erro na chamada da API");
 
     const data = await response.json();
-    console.log("Resposta da API:", data);
     alert(`API chamada com sucesso para ${name}`);
   } catch (error) {
-    console.error("Falha ao chamar API:", error);
     alert(`Erro ao chamar API para ${name}`);
   }
 }
@@ -49,10 +45,8 @@ async function moveTeamRoomTeam(name, skill) {
     if (!response.ok) throw new Error("Erro na chamada da API");
 
     const data = await response.json();
-    console.log("Resposta da API:", data);
     alert(`API chamada com sucesso para ${name}`);
   } catch (error) {
-    console.error("Falha ao chamar API:", error);
     alert(`Erro ao chamar API para ${name}`);
   }
 }

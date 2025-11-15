@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     renderSelectedPlayers(selectedPlayers);
 
-    // console.log("Jogadores selecionados carregados:", allPlayers);
     initSearch(query => {
         if (query.length < 1) return;
         
