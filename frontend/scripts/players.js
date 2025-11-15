@@ -45,7 +45,7 @@ export function addSelectedPlayer(player) {
 
 export async function getPlayers() {
     try {
-        const response = await fetch('notas.csv');
+        const response = await fetch('players.csv');
         const text = await response.text();
 
         const linhas = text.split('\n').filter(l => l.trim() !== '');
