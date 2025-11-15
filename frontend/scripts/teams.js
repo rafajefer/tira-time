@@ -62,7 +62,7 @@ export function renderTeams(teams) {
             <ul>
             ${team.map((p, i) => `
                 <li style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
-                <span>${p.name} — ${p.skill} - ${getSkillValue(p.skill)}</span>
+                <span>${p.name} — ${p.skill}</span>
                 <button 
                     style="padding:4px 8px; border:none; border-radius:4px; background:var(--bs-primary); color:#fff; cursor:pointer;"
                     onclick="movePlayerToRoomConfirmed('${encodeURIComponent(p.name)}', '${encodeURIComponent(p.skill)}')"
