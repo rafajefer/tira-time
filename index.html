@@ -7,7 +7,30 @@
   <link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 <body>
-  <h1>Sorteio de Times</h1>
+  <header>
+    <h1>Sorteio de Times</h1>
+    <button id="google-login-btn" class="google-login-btn">Entrar com Google</button>
+    <div id="user-info" style="display:none">
+      <span id="user-name"></span>
+    </div>
+  </header>
+  <!-- Ícone sanduíche para abrir menu lateral -->
+  <button id="menu-toggle" class="menu-toggle" style="display:none" aria-label="Abrir menu">
+    <span class="menu-icon"></span>
+  </button>
+
+  <!-- Menu lateral -->
+  <nav id="side-menu" class="side-menu" style="display:none">
+    <div class="side-menu-header user-info-box">
+      <img id="user-avatar" class="user-avatar" src="" alt="Avatar" style="display:none" />
+      <span id="side-user-name"></span>
+    </div>
+    <ul class="side-menu-list">
+      <li><button id="side-players-btn" class="side-menu-btn">Jogadores</button></li>
+      <li><button id="side-members-btn" class="side-menu-btn">Membros</button></li>
+      <li><button id="side-logout-btn" class="side-menu-btn side-logout">Sair</button></li>
+    </ul>
+  </nav>
 
   <div class="section" id="search-section">
     <h2>Buscar Jogadores</h2>
@@ -36,5 +59,6 @@
   </div>
 
   <script type="module" src="scripts/app.js"></script>
+  <script type="module" src="scripts/firebase.js"></script>
 </body>
 </html>

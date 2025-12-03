@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Realtime DB Teste</title>
+</head>
+<body>
+
+  <h1>Teste Firebase Realtime DB</h1>
+
+  <button id="saveBtn">Salvar Usuário</button>
+  
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDjLU8zwF5bFgZDzguHfnQ9BsHWtJjquA8",
+      authDomain: "tira-time-7b6bc.firebaseapp.com",
+      databaseURL: "https://tira-time-7b6bc-default-rtdb.firebaseio.com",
+      projectId: "tira-time-7b6bc",
+      storageBucket: "tira-time-7b6bc.firebasestorage.app",
+      messagingSenderId: "240699308200",
+      appId: "1:240699308200:web:1ccacd7d97f4f13f3c2a9d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      push(ref(db, "users"), {
+        name: "Maria",
+        age: 30
+      });
+    });
+
+    // Ler dados em tempo real
+    onValue(ref(db, "users"), (snapshot) => {
+      console.log("Usuários:", snapshot.val());
+    });
+  </script>
+</body>
+</html>

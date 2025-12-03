@@ -1,5 +1,5 @@
 export const levels = {
-  'S': 10, 'A+': 9.5, 'A': 9, 'B+': 8.5, 'B': 8, 'C': 7, 'D': 6
+  'S+': 10, 'S': 9.5, 'A+': 9, 'A': 8.5, 'B+': 8, 'B': 7.5, 'C': 7, 'D': 6
 };
 
 export function getSkillValue(skill) {
