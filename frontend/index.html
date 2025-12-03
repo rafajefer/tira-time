@@ -9,6 +9,15 @@
 <body>
   <h1>Sorteio de Times</h1>
 
+  <div class="section" id="login-section">
+    <div id="user-info" style="display:none" class="user-info-box">
+      <img id="user-avatar" class="user-avatar" src="" alt="Avatar" style="display:none" />
+      <span id="user-name" class="user-name"></span>
+      <button id="logout-btn" class="google-logout-btn">Sair</button>
+    </div>
+    <button id="google-login-btn" class="google-login-btn">Entrar com Google</button>
+  </div>
+
   <div class="section" id="search-section">
     <h2>Buscar Jogadores</h2>
     <input type="text" id="search-input" placeholder="Digite o nome..." autocomplete="off" />
@@ -36,5 +45,6 @@
   </div>
 
   <script type="module" src="scripts/app.js"></script>
+  <script type="module" src="scripts/firebase.js"></script>
 </body>
 </html>
