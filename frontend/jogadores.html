@@ -1,0 +1,70 @@
+  <!-- Modal para adicionar jogador -->
+  <div id="add-player-modal" class="modal" style="display:none">
+    <div class="modal-content">
+      <h2>Novo Jogador</h2>
+      <form id="add-player-form">
+        <label for="player-nick">Nome</label>
+        <input type="text" id="player-nick" name="nick" required autocomplete="off" />
+        <label for="player-skill">Série</label>
+        <select id="player-skill" name="skill" required>
+          <option value="">Selecione...</option>
+          <option value="S+">S+ (10)</option>
+          <option value="S">S (9.5)</option>
+          <option value="A+">A+ (9)</option>
+          <option value="A">A (8.5)</option>
+          <option value="B+">B+ (8)</option>
+          <option value="B">B (7.5)</option>
+          <option value="C">C (7)</option>
+          <option value="D">D (6)</option>
+        </select>
+        <label class="checkbox-label">
+          <input type="checkbox" id="player-admin" name="admin" /> Admin
+        </label>
+        <div class="modal-actions">
+          <button type="submit" class="add-player-btn">Adicionar</button>
+          <button type="button" id="close-modal-btn" class="google-logout-btn">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Jogadores</title>
+  <link rel="stylesheet" href="css/styles.css" type="text/css" />
+</head>
+<body>
+  <header>
+    <h1>Jogadores</h1>
+    <a href="index.html" class="back-link">&larr; Voltar</a>
+  </header>
+  <main>
+    <div class="section">
+      <div class="players-actions">
+        <span id="players-total" class="players-total"></span>
+        <button id="add-player-btn" class="add-player-btn">Adicionar Jogador</button>
+      </div>
+      <div id="players-loading" style="display:none;text-align:center;padding:20px;font-size:1.2em;">Carregando jogadores...</div>
+      <ul id="players-list" class="players-list"></ul>
+    </div>
+  </main>
+  <script type="module">
+    import { getCurrentMember } from './scripts/getCurrentMember.js';
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = 'index.html';
+        return;
+      }
+      const member = await getCurrentMember();
+      if (!member || !member.isAdmin) {
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+  <script type="module" src="scripts/players-list.js"></script>
+</body>
+</html>

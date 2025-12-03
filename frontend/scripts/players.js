@@ -1,3 +1,16 @@
+// Busca jogadores do Firebase Realtime Database (API REST)
+export async function getPlayersDb() {
+    try {
+        const response = await fetch('https://tira-time-7b6bc-default-rtdb.firebaseio.com/players.json');
+        const data = await response.json();
+        if (!data) return [];
+        // data: { id1: {...}, id2: {...} }
+        return Object.entries(data).map(([id, value]) => ({ id, ...value }));
+    } catch (err) {
+        console.error('Erro ao buscar jogadores do Firebase:', err);
+        return [];
+    }
+}
 import { saveSelectedPlayers } from './storage.js';
 import { renderSelectedPlayers } from './ui.js';
 
